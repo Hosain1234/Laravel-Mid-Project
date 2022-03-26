@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "<a href='{{route('login')}}'>Login</a><br><a href='/registration'>Registration</a>";
 });
-// this is a comment
+Route::get('/login',[HomeController::class,'login'])->name('login');
+Route::get('/registration',[HomeController::class,'registration'])->name('registration');
+Route::post('/registration',[HomeController::class,'regSubmit'])->name('registration');
