@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class HomeController extends Controller
 {
@@ -15,10 +16,11 @@ class HomeController extends Controller
         return view('home.registration');
     }
     public function regSubmit(Request $req){
+        // dd($req->all());
         $req->validate(
             [
                 'name'=> 'required|regex:/^[A-Z a-z.]+$/',
-                'email'=> 'email',
+                'email'=> 'required|email',
                 'st_id'=> 'required|regex:/^[0-9]{2}-[0-9]{5}-[1-3]{1}$/|unique:students,st_id',
                 'f_id'=> 'required|regex:/^[0-9]{4}-[0-9]{4}-[2-3]{1}$/',
                 'pass'=> 'required',
@@ -29,5 +31,13 @@ class HomeController extends Controller
                 'st_id.regex'=>'Please follow xx-xxxxx-x this pattern'
             ]
         );
+        $st = new Student();
+        $st->name=$req->name;
+        $st->st_id=$req->st_id;
+        $st->password=$req->pass;
+        $st->email=$req->email;
+        $st->save();
+        session()->flash('msg', 'Registration Successful');
+        return redirect()->route('login');
     }
 }

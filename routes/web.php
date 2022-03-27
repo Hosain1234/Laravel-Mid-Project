@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +15,8 @@ use app\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return "<a href='{{route('login')}}'>Login</a><br><a href='/registration'>Registration</a>";
+    return "<a href='/login'>Login</a><br><a href='/registration'>Registration</a>";
 });
-Route::get('/login',[HomeController::class,'login'])->name('login');
-Route::get('/registration',[HomeController::class,'registration'])->name('registration');
-Route::post('/registration',[HomeController::class,'regSubmit'])->name('registration');
+Route::get('/login', [HomeController::class,'login'])->name('login');
+Route::get('/registration', [HomeController::class,'registration'])->name('registration');
+Route::post('/registration', [HomeController::class,'regSubmit'])->name('regSubmit');
