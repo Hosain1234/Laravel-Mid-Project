@@ -10,11 +10,11 @@
         <h3 class="mt-4 mb-4 text-center text-success fw-bolder">Login Here</h3>
         <form action="{{route('login')}}" method="post">
             {{@csrf_field()}}
-            <input type="text" nane="st_id" value="{{old('st_id')}}" class="form-control mb-2" placeholder="Student ID">
+            <input type="text" name="st_id" value="{{old('st_id')}}" class="form-control mb-2" placeholder="Student ID">
             @error('st_id')
                 <span class="text-danger">{{$message}}</span>
             @enderror
-            <input type="password" nane="pass" class="form-control mb-2" placeholder="Password">
+            <input type="password" name="pass" class="form-control mb-2" placeholder="Password">
             @error('pass')
                 <span class="text-danger">{{$message}}</span>
             @enderror

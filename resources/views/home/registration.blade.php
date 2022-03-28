@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <div class="container row">
+
+<!-- signup design -->
     <div class="col-md-4"></div>
     <div class="col-md-4">
         <h3 class="mt-4 mb-4 text-center text-success fw-bolder">Signup Here</h3>

@@ -11,8 +11,8 @@ class StudentHomeController extends Controller
 {
     public function home(){
         $st_id = session()->get('logged');
-        $st_id = Student::where('st_id',$st_id)->first();
-        return view('home.student')->with('st', $st);
+        $st = Student::where('st_id',$st_id)->first();
+        return view('student.home', compact('st'));
     }
     public function prereg(){
         $st_id = session()->get('logged');
@@ -25,7 +25,7 @@ class StudentHomeController extends Controller
                 }
             }
         }
-        return view('student.prereg')->with('courses', $courses);
+        return view('home.preregistration')->with('courses', $courses);
     }
     public function preregModify(Request $req){
         $st_id = session()->get('logged');
@@ -37,5 +37,10 @@ class StudentHomeController extends Controller
             $cs->save();
         }
         return back();
+    }
+
+    public function test()
+    {
+        return 'test';
     }
 }

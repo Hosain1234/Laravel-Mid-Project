@@ -22,7 +22,7 @@ class HomeController extends Controller
                 'name'=> 'required|regex:/^[A-Z a-z.]+$/',
                 'email'=> 'required|email',
                 'st_id'=> 'required|regex:/^[0-9]{2}-[0-9]{5}-[1-3]{1}$/|unique:students,st_id',
-                'f_id'=> 'required|regex:/^[0-9]{4}-[0-9]{4}-[2-3]{1}$/',
+                // 'f_id'=> 'required|regex:/^[0-9]{4}-[0-9]{4}-[2-3]{1}$/',
                 'pass'=> 'required',
                 'conf_pass'=> 'required|same:pass'
             ]
@@ -42,7 +42,8 @@ class HomeController extends Controller
     }
 
     public function loginSubmit(Request $req){
-        $st = Student::where('st_id', $req->uname)->where('password',md5($req->pass))->first();
+        // dd($req->all());
+        $st = Student::where('st_id', $req->st_id)->where('password',$req->pass)->first();
         if($st){
             session()->put('logged',$st->st_id);
             return redirect()->route('home.student');

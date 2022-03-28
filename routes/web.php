@@ -16,7 +16,7 @@ use App\Http\Controllers\StudentHomeController;
 */
 
 Route::get('/', function () {
-    return "<a href='/login'>Login</a><br><a href='/registration'>Registration</a>";
+    return view('homepage');
 });
 Route::get('/login', [HomeController::class,'login'])->name('login');
 Route::post('/login', [HomeController::class,'loginSubmit'])->name('loginSubmit');
