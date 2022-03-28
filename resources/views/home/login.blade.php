@@ -8,7 +8,7 @@
         <span class="alert alert-info">{{Session::get('msg')}}</span>
         @endif
         <h3 class="mt-4 mb-4 text-center text-success fw-bolder">Login Here</h3>
-        <form action="{{route('registration')}}" method="post">
+        <form action="{{route('login')}}" method="post">
             {{@csrf_field()}}
             <input type="text" nane="st_id" value="{{old('st_id')}}" class="form-control mb-2" placeholder="Student ID">
             @error('st_id')

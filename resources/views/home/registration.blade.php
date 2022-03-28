@@ -5,7 +5,7 @@
     <div class="col-md-4">
         <h3 class="mt-4 mb-4 text-center text-success fw-bolder">Signup Here</h3>
         <form action="{{route('regSubmit')}}" method="post" enctype="multipart/form-data">
-            @csrf
+            {{@csrf_field()}}
             <input type="text" name="name" value="{{old('name')}}" class="form-control mb-2" placeholder="Name">
             @error('name')
                 <span class="text-danger">{{$message}}</span>

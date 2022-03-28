@@ -40,4 +40,14 @@ class HomeController extends Controller
         session()->flash('msg', 'Registration Successful');
         return redirect()->route('login');
     }
+
+    public function loginSubmit(Request $req){
+        $st = Student::where('st_id', $req->uname)->where('password',md5($req->pass))->first();
+        if($st){
+            session()->put('logged',$st->st_id);
+            return redirect()->route('home.student');
+        }
+        session()->flash('msg','User not found');
+        return redirect()->route('login');
+    }
 }

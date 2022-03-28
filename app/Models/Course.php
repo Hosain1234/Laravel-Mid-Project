@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Studentcourse;
 
-
-class student extends Model
+class Course extends Model
 {
     use HasFactory;
-    public $timestamps = false;
-    public function courses(){
-        return $this -> hasMany(Studentcourse::class, 'st_id', 'st_id');
+    public function students(){
+        return $this -> hasMany(Studentcourse::class, 'cr_id');
     }
 }
