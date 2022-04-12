@@ -1,6 +1,7 @@
-@extends('layouts.logged')
+@extends('layouts.app')
 @section('content')
     <center>
+        <h2>asi</h2>
         <form action="{{route('student.prereg.modify')}}" method="post">
         {{@csrf_field()}}
         @foreach($courses as $c)
